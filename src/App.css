@@ -1,0 +1,310 @@
+
+:root {
+  --yellow: #F5C32C;
+  --orange: #FC9F5B;
+  --black: #242D49;
+  --gray: #788097;
+  --blueCard: #DDF8FE;
+  --purple: rgb(238 210 255);
+  --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
+  --orangeCard: rgba(252, 166, 31, 0.45);
+  --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+  --fBlack: #232732;
+  --fWhite: #fff;
+  --bBlack: #24272C;
+  --bViolet: #7DCFB6;
+  --fillYellow: #F7A21E;
+  --fillBlue: #4E4CD3;
+  --tRed: #FC9F5B;
+  --htmlBlack: #2A2A2A;
+  --blue: rgb(93, 93, 241);
+}
+*{
+    font-weight: 400;
+    font-style: normal;
+  
+}
+* {
+  font-family: 'Gumela';
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ /* font-family: "Anta", sans-serif;*/
+
+  font-weight: 100;
+  font-size: 20px;
+
+  letter-spacing: 0.05em;
+  padding: 0;
+  margin: 0;
+  
+}
+
+html {
+  background: var(--htmlBlack);
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  
+}
+
+body {
+  width: 100%;
+}
+
+
+.App {
+  position: relative;
+  color: #fff;
+  background: var(--fBlack);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  padding: .2rem;
+  border-radius: 35px;
+margin: .2rem;
+}
+
+.app-ombre {
+
+  border-radius: 35px;
+
+
+}
+
+.bcontact {
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 12px 26px;
+  background: linear-gradient(180deg, #fdc50f 27%, #fb982f 99%);
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 25%);
+}
+
+.floating {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+}
+
+.floating:active {
+  scale: .9;
+}
+
+.floating img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1200px) {
+
+  .choice {
+    display: none !important;
+  }
+
+  .contact .choice{
+    display: initial !important;
+  }
+
+  .header {
+    position: relative !important;
+  }
+
+  .intro {
+    padding: 1rem 0 3rem 0 !important;
+
+  }
+
+
+  .services {
+    flex-direction: column !important;
+    padding: 0 !important;
+    height: 100% !important;
+    margin: 0 !important;
+    
+  }
+
+  .awesome {
+    padding: 3rem;
+
+  }
+
+
+
+  .awesome>:nth-child(1) {
+    display: inline !important;
+
+  }
+
+  .awesome>:nth-child(2) {
+    display: inline !important;
+  }
+
+  .awesome>:nth-child(3) {
+    display: block !important;
+  }
+
+  .cards {
+    position: static !important;
+
+    display: flex  !important;
+    justify-content: center  !important;;
+    flex-wrap: wrap;
+    gap: 7rem;
+  }
+  .cards>*{
+    position: static !important;
+    width: 10rem;
+    min-height: 13rem;
+    margin: 1rem;
+  }
+  
+}
+
+@media screen and (max-width: 1000px) {
+
+
+  .intro {
+    justify-content: space-around !important;
+    gap: 0 !important;
+
+  }
+
+  .i-left {
+    margin-left: 2rem !important;
+  }
+
+  .profil {
+    width: 15rem !important;
+    height: 15rem !important;
+  }
+
+  .floatingdiv {
+    scale: .6;
+  }
+
+
+.s-img {
+  height: max-content !important
+  ;
+}
+
+}
+
+
+@media screen and (max-width: 850px) {
+
+  .app {
+    font-size: 15px;
+  }
+
+  .intro {
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .header {
+    padding: 0 !important;
+  }
+
+  .navbar {
+    justify-content: space-between !important;
+    margin: 0 1rem !important;
+  }
+
+  .i-left {
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+
+
+  .profil {
+    width: 11rem !important;
+    height: 11rem !important;
+  }
+
+
+
+  .i-left>span:nth-of-type(1) {
+    font-size: 1rem !important;
+
+  }
+
+  .i-left>span:nth-of-type(2) {
+    font-size: 1.4rem !important;
+
+  }
+
+  .i-left>span:nth-of-type(3) {
+    font-size: 1.4em !important;
+
+  }
+
+  .i-left>span:nth-of-type(4) {
+    font-size: 1rem !important;
+  }
+
+  .i-left>span:nth-of-type(5) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+
+  .contact .c-body{
+    flex-direction: column  !important;
+    justify-content: center !important;
+
+    height: 90vh;
+  }
+
+  .c-left{
+    flex: 1;
+    
+  }
+
+.contact{
+  padding: 0 !important;
+
+}
+
+.c-card img {
+  width: 50vw !important;
+  height: 30vh !important;
+  
+
+}
+  .c-right input, textarea{
+    width: 90vw !important;
+  }
+
+  .c-right{
+    gap: 1rem;
+  }
+
+  .s-text{
+    text-align: center ;
+  }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .i-right{
+    margin: 0 !important;
+  }
+
+}

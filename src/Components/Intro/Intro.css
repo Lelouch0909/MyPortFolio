@@ -1,0 +1,104 @@
+.intro{
+    display: flex;
+    padding: 3rem 0 3rem 0;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 2rem;
+    height: 90vh;
+}
+
+.profil{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 100%;
+    background: var(--bBlack);
+    box-shadow: 25px 25px 50px 0  rgba(0, 0, 0, 0.5);
+
+}
+
+.p-ombre{
+    box-shadow: -25px -25px 50px 0  rgba(255, 255, 255, 0.1);
+    border-radius: 100%;
+}
+.profil img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.i-right{
+    position: relative;
+    margin: 4rem;
+}
+.i-left{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.i-left> span{
+    text-align: center;
+    font-weight: bold;
+}
+
+.i-left> span:nth-of-type(1){
+    font-size: 1rem;
+
+}
+
+.i-left> span:nth-of-type(2){
+    font-size: 2.5rem;
+
+}
+
+.i-left> span:nth-of-type(3), .eff, .typewriter{
+    color: var(--tRed);
+    font-size: 1.8rem;
+
+}
+
+.i-left> span:nth-of-type(4){
+    font-size: 1.2rem;
+    color: #ffffffa8;
+}
+
+.i-left> span:nth-of-type(5){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.deco{
+    position: absolute;
+
+}
+
+.deco1{
+    bottom: -1rem;
+    left: -5rem;
+}
+
+.deco2{
+    top: -2rem;
+    right: -3rem;
+}
+
+.cursor{
+    font-size: 1.9rem;
+    color: var(--tRed);
+    font-weight: 900;
+    animation: 1.2s infinite blink;
+}
+
+@keyframes blink {
+    0% ,100%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+}
