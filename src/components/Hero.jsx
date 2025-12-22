@@ -111,7 +111,10 @@ const Hero = () => {
                         pointerEvents: 'auto',
                         background: 'rgba(5, 5, 5, 0.5)',
                         backdropFilter: 'blur(3px)',
-                        borderRadius: '50px'
+                        borderRadius: '50px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
                     }}
                 >
                     <h1 style={{
@@ -135,7 +138,7 @@ const Hero = () => {
                         fontWeight: '300',
                         textShadow: '0 0 10px rgba(255,255,255,0.2)'
                     }}>
-                        Cloud Architect
+                        Software DevOps Engineer
                     </h2>
                     <p style={{
                         fontSize: '1.2rem',
@@ -148,35 +151,87 @@ const Hero = () => {
                         Designing resilient global infrastructure and automated cloud systems.
                     </p>
 
-                    <button
-                        onClick={scrollToContact}
+                    <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '3rem' }}>
+                        <button
+                            onClick={scrollToContact}
+                            style={{
+                                padding: '1rem 3rem',
+                                fontSize: '1.1rem',
+                                fontWeight: 'bold',
+                                borderRadius: '50px',
+                                border: '1px solid #00ff88',
+                                background: 'rgba(0, 255, 136, 0.1)',
+                                backdropFilter: 'blur(5px)',
+                                color: '#00ff88',
+                                cursor: 'pointer',
+                                boxShadow: '0 0 20px rgba(0,255,136,0.2)',
+                                transition: 'all 0.2s ease',
+                                letterSpacing: '1px'
+                            }}
+                            onMouseOver={(e) => {
+                                e.target.style.background = 'rgba(0, 255, 136, 0.2)';
+                                e.target.style.boxShadow = '0 0 35px rgba(0,255,136,0.5)';
+                                e.target.style.transform = 'scale(1.05)';
+                            }}
+                            onMouseOut={(e) => {
+                                e.target.style.background = 'rgba(0, 255, 136, 0.1)';
+                                e.target.style.boxShadow = '0 0 20px rgba(0,255,136,0.2)';
+                                e.target.style.transform = 'scale(1)';
+                            }}
+                        >
+                            GET IN TOUCH
+                        </button>
+
+                        <a
+                            href="https://twitter.com" // Replace with actual X link if available, keeping generic for now
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                padding: '1rem 2rem',
+                                fontSize: '1.1rem',
+                                fontWeight: 'bold',
+                                borderRadius: '50px',
+                                border: '1px solid #fff',
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                backdropFilter: 'blur(5px)',
+                                color: '#fff',
+                                cursor: 'pointer',
+                                textDecoration: 'none',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                transition: 'all 0.2s ease'
+                            }}
+                            onMouseOver={(e) => {
+                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+                                e.currentTarget.style.transform = 'scale(1.05)';
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                                e.currentTarget.style.transform = 'scale(1)';
+                            }}
+                        >
+                            <span>Follow on</span>
+                            <i className="fa-brands fa-x-twitter" style={{ fontSize: '1.2rem' }}></i>
+                        </a>
+                    </div>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, y: [0, 10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         style={{
-                            padding: '1rem 3rem',
-                            fontSize: '1.1rem',
-                            fontWeight: 'bold',
-                            borderRadius: '50px',
-                            border: '1px solid #00ff88',
-                            background: 'rgba(0, 255, 136, 0.1)',
-                            backdropFilter: 'blur(5px)',
-                            color: '#00ff88',
-                            cursor: 'pointer',
-                            boxShadow: '0 0 20px rgba(0,255,136,0.2)',
-                            transition: 'all 0.2s ease',
-                            letterSpacing: '1px'
-                        }}
-                        onMouseOver={(e) => {
-                            e.target.style.background = 'rgba(0, 255, 136, 0.2)';
-                            e.target.style.boxShadow = '0 0 35px rgba(0,255,136,0.5)';
-                            e.target.style.transform = 'scale(1.05)';
-                        }}
-                        onMouseOut={(e) => {
-                            e.target.style.background = 'rgba(0, 255, 136, 0.1)';
-                            e.target.style.boxShadow = '0 0 20px rgba(0,255,136,0.2)';
-                            e.target.style.transform = 'scale(1)';
+                            color: 'rgba(255, 255, 255, 0.5)',
+                            fontSize: '0.9rem',
+                            letterSpacing: '3px',
+                            textTransform: 'uppercase',
+                            marginTop: '1rem',
+                            cursor: 'default'
                         }}
                     >
-                        GET IN TOUCH
-                    </button>
+                        Explore My World
+                        <div style={{ marginTop: '0.5rem', fontSize: '1.2rem' }}>↓</div>
+                    </motion.div>
                 </motion.div>
             </div>
         </div>
