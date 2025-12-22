@@ -81,7 +81,7 @@ const Hero = () => {
                         <CyberGlobe />
                     </Suspense>
 
-                    <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={0.5} />
+                    {/* Stars removed for cleaner look */}
                     <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
                 </Canvas>
             </div>
@@ -105,39 +105,14 @@ const Hero = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.2 }}
-                    style={{
-                        textAlign: 'center',
-                        padding: '3rem',
-                        pointerEvents: 'auto',
-                        background: 'rgba(5, 5, 5, 0.5)',
-                        backdropFilter: 'blur(3px)',
-                        borderRadius: '50px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center'
-                    }}
+                    className="hero-container"
+                    style={{ pointerEvents: 'auto' }}
                 >
-                    <h1 style={{
-                        fontSize: '5rem',
-                        fontWeight: '800',
-                        background: '-webkit-linear-gradient(45deg, #00ff88, #00ccff)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        marginBottom: '0.5rem',
-                        textShadow: '0 0 40px rgba(0,255,136,0.3)',
-                        letterSpacing: '-2px'
-                    }}>
+
+                    <h1 className="hero-title">
                         LONTSI HERMANN
                     </h1>
-                    <h2 style={{
-                        fontSize: '2rem',
-                        letterSpacing: '5px',
-                        textTransform: 'uppercase',
-                        marginBottom: '2rem',
-                        color: '#fff',
-                        fontWeight: '300',
-                        textShadow: '0 0 10px rgba(255,255,255,0.2)'
-                    }}>
+                    <h2 className="hero-subtitle">
                         Software DevOps Engineer
                     </h2>
                     <p style={{
@@ -146,14 +121,16 @@ const Hero = () => {
                         maxWidth: '600px',
                         margin: '0 auto',
                         lineHeight: '1.6',
-                        marginBottom: '3rem'
+                        marginBottom: '3rem',
+                        textAlign: 'center'
                     }}>
                         Designing resilient global infrastructure and automated cloud systems.
                     </p>
 
-                    <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '3rem' }}>
+                    <div className="hero-buttons">
                         <button
                             onClick={scrollToContact}
+                            className="hero-btn"
                             style={{
                                 padding: '1rem 3rem',
                                 fontSize: '1.1rem',
@@ -166,7 +143,8 @@ const Hero = () => {
                                 cursor: 'pointer',
                                 boxShadow: '0 0 20px rgba(0,255,136,0.2)',
                                 transition: 'all 0.2s ease',
-                                letterSpacing: '1px'
+                                letterSpacing: '1px',
+                                whiteSpace: 'nowrap'
                             }}
                             onMouseOver={(e) => {
                                 e.target.style.background = 'rgba(0, 255, 136, 0.2)';
@@ -183,9 +161,10 @@ const Hero = () => {
                         </button>
 
                         <a
-                            href="https://twitter.com" // Replace with actual X link if available, keeping generic for now
+                            href="https://twitter.com"
                             target="_blank"
                             rel="noopener noreferrer"
+                            className="hero-btn"
                             style={{
                                 padding: '1rem 2rem',
                                 fontSize: '1.1rem',
@@ -199,8 +178,10 @@ const Hero = () => {
                                 textDecoration: 'none',
                                 display: 'flex',
                                 alignItems: 'center',
+                                justifyContent: 'center',
                                 gap: '10px',
-                                transition: 'all 0.2s ease'
+                                transition: 'all 0.2s ease',
+                                whiteSpace: 'nowrap'
                             }}
                             onMouseOver={(e) => {
                                 e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
