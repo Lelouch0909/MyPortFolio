@@ -6,7 +6,7 @@ import TechStack from "./components/TechStack";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 
-export function App() {
+export default function App() {
   return (
     <div className="App">
       <Hero />

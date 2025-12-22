@@ -1,91 +1,87 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useMemo, useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
-import * as THREE from 'three';
+import { OrbitControls, Stars, PointMaterial, Points } from '@react-three/drei';
 import { motion } from 'framer-motion';
+import * as THREE from 'three';
 
-
-const NetworkParticles = ({ count = 300 }) => {
-    const points = useRef();
-
-    // Generate random points for the network
-    const particlesPosition = useMemo(() => {
-        const positions = new Float32Array(count * 3);
+const CyberGlobe = () => {
+    const count = 4000; // Dense particle count
+    const positions = useMemo(() => {
+        const pos = new Float32Array(count * 3);
+        const radius = 9;
         for (let i = 0; i < count; i++) {
-            // Create a cloud structure
-            const x = (Math.random() - 0.5) * 15;
-            const y = (Math.random() - 0.5) * 15;
-            const z = (Math.random() - 0.5) * 15;
-            positions.set([x, y, z], i * 3);
+            // Uniform point distribution on sphere surface
+            const u = Math.random();
+            const v = Math.random();
+            const theta = 2 * Math.PI * u;
+            const phi = Math.acos(2 * v - 1);
+
+            pos[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+            pos[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+            pos[i * 3 + 2] = radius * Math.cos(phi);
         }
-        return positions;
-    }, [count]);
+        return pos;
+    }, []);
+
+    const pointsRef = useRef();
 
     useFrame((state) => {
         const time = state.clock.getElapsedTime();
-        // Rotate the cloud slowly
-        points.current.rotation.y = time * 0.05;
-        points.current.rotation.x = time * 0.02;
+        if (pointsRef.current) {
+            pointsRef.current.rotation.y = time * 0.08; // Smooth rotation
+        }
     });
 
     return (
-        <points ref={points}>
-            <bufferGeometry>
-                <bufferAttribute
-                    attach="attributes-position"
-                    count={particlesPosition.length / 3}
-                    array={particlesPosition}
-                    itemSize={3}
+        <group ref={pointsRef}>
+            {/* The Particle Sphere */}
+            <Points positions={positions} stride={3} frustumCulled={false}>
+                <PointMaterial
+                    transparent
+                    color="#00ccff"
+                    size={0.08}
+                    sizeAttenuation={true}
+                    depthWrite={false}
+                    opacity={0.8}
                 />
-            </bufferGeometry>
-            <pointsMaterial
-                size={0.15}
-                color="#00ff88"
-                sizeAttenuation={true}
-                transparent={true}
-                opacity={0.8}
-                blending={THREE.AdditiveBlending}
-            />
-        </points>
+            </Points>
+
+            {/* Inner Glow Sphere (Atmosphere) */}
+            <mesh>
+                <sphereGeometry args={[8.8, 32, 32]} />
+                <meshBasicMaterial color="#00ff88" transparent opacity={0.05} />
+            </mesh>
+
+            {/* Outer Connecting Lines (Abstract) */}
+            <mesh scale={[1.05, 1.05, 1.05]}>
+                <sphereGeometry args={[9, 20, 20]} />
+                <meshBasicMaterial color="#00ccff" wireframe transparent opacity={0.03} />
+            </mesh>
+        </group>
     );
 };
 
-// Connections between close points to simulate network/nodes
-const NetworkConnections = ({ count = 50 }) => {
-    // Simplified static lines for performance/aesthetic (random lines)
-    const lines = useMemo(() => {
-        const points = [];
-        for (let i = 0; i < count; i++) {
-            const x1 = (Math.random() - 0.5) * 10;
-            const y1 = (Math.random() - 0.5) * 10;
-            const z1 = (Math.random() - 0.5) * 10;
-            const x2 = x1 + (Math.random() - 0.5) * 4;
-            const y2 = y1 + (Math.random() - 0.5) * 4;
-            const z2 = z1 + (Math.random() - 0.5) * 4;
-            points.push(new THREE.Vector3(x1, y1, z1));
-            points.push(new THREE.Vector3(x2, y2, z2));
-        }
-        return points;
-    }, [count]);
-
-    return (
-        <lineSegments>
-            <bufferGeometry setFromPoints={lines} />
-            <lineBasicMaterial color="#00ccff" transparent opacity={0.2} />
-        </lineSegments>
-    )
-}
-
 const Hero = () => {
+    const scrollToContact = () => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
-        <div style={{ height: '100vh', position: 'relative', width: '100%', background: 'radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%)' }}>
+        <div style={{ height: '100vh', position: 'relative', width: '100%', background: '#050505' }}>
             {/* 3D Canvas */}
             <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
-                <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
+                <Canvas camera={{ position: [0, 0, 18], fov: 60 }} dpr={[1, 2]}>
+                    <fog attach="fog" args={['#050505', 15, 35]} />
                     <ambientLight intensity={0.5} />
-                    <NetworkParticles />
-                    <NetworkConnections />
-                    <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
+
+                    <Suspense fallback={null}>
+                        <CyberGlobe />
+                    </Suspense>
+
+                    <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={0.5} />
                     <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
                 </Canvas>
             </div>
@@ -106,10 +102,17 @@ const Hero = () => {
                 pointerEvents: 'none'
             }}>
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
-                    style={{ textAlign: 'center' }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.2 }}
+                    style={{
+                        textAlign: 'center',
+                        padding: '3rem',
+                        pointerEvents: 'auto',
+                        background: 'rgba(5, 5, 5, 0.5)',
+                        backdropFilter: 'blur(3px)',
+                        borderRadius: '50px'
+                    }}
                 >
                     <h1 style={{
                         fontSize: '5rem',
@@ -118,7 +121,8 @@ const Hero = () => {
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         marginBottom: '0.5rem',
-                        textShadow: '0 0 30px rgba(0,255,136,0.3)'
+                        textShadow: '0 0 40px rgba(0,255,136,0.3)',
+                        letterSpacing: '-2px'
                     }}>
                         LONTSI HERMANN
                     </h1>
@@ -127,21 +131,52 @@ const Hero = () => {
                         letterSpacing: '5px',
                         textTransform: 'uppercase',
                         marginBottom: '2rem',
-                        color: '#fff'
+                        color: '#fff',
+                        fontWeight: '300',
+                        textShadow: '0 0 10px rgba(255,255,255,0.2)'
                     }}>
-                        Architecting the Cloud
+                        Cloud Architect
                     </h2>
                     <p style={{
                         fontSize: '1.2rem',
-                        color: '#aaa',
+                        color: '#e2e8f0',
                         maxWidth: '600px',
                         margin: '0 auto',
-                        lineHeight: '1.6'
+                        lineHeight: '1.6',
+                        marginBottom: '3rem'
                     }}>
-                        DevOps Engineer • Software Architect • Fullstack Developer
-                        <br />
-                        <span style={{ fontSize: '0.9rem', color: '#666' }}>Building scalable, secure, and automated infrastructure.</span>
+                        Designing resilient global infrastructure and automated cloud systems.
                     </p>
+
+                    <button
+                        onClick={scrollToContact}
+                        style={{
+                            padding: '1rem 3rem',
+                            fontSize: '1.1rem',
+                            fontWeight: 'bold',
+                            borderRadius: '50px',
+                            border: '1px solid #00ff88',
+                            background: 'rgba(0, 255, 136, 0.1)',
+                            backdropFilter: 'blur(5px)',
+                            color: '#00ff88',
+                            cursor: 'pointer',
+                            boxShadow: '0 0 20px rgba(0,255,136,0.2)',
+                            transition: 'all 0.2s ease',
+                            letterSpacing: '1px'
+                        }}
+                        onMouseOver={(e) => {
+                            e.target.style.background = 'rgba(0, 255, 136, 0.2)';
+                            e.target.style.boxShadow = '0 0 35px rgba(0,255,136,0.5)';
+                            e.target.style.transform = 'scale(1.05)';
+                        }}
+                        onMouseOut={(e) => {
+                            e.target.style.background = 'rgba(0, 255, 136, 0.1)';
+                            e.target.style.boxShadow = '0 0 20px rgba(0,255,136,0.2)';
+                            e.target.style.transform = 'scale(1)';
+                        }}
+                    >
+                        GET IN TOUCH
+                    </button>
                 </motion.div>
             </div>
         </div>
