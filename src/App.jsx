@@ -1,40 +1,25 @@
-import React, { useState } from "react";
-import "./App.css"
-import Contact from "./Components/Contact/Contact";
-import Intro from "./Components/Intro/Intro";
-import Navbar from "./Components/Navbar/Navbar";
-import Portfolio from "./Components/Portfolio/Portfolio";
-import Services from "./Components/Services/Services";
-import Skills from "./Components/Skills/Skills";
-import Footer from "./Components/Footer/Footer";
-
-import { themeContext } from ".";
+import React from "react";
+import Hero from "./components/Hero";
+import Experience from "./components/Experience";
+import Projects from "./components/Projects";
+import TechStack from "./components/TechStack";
+import Certifications from "./components/Certifications";
+import Contact from "./components/Contact";
 
 export function App() {
-
-  let [dark, setTheme] = useState(true)
-
-
-
   return (
-    <React.StrictMode>
+    <div className="App">
+      <Hero />
+      <Experience />
+      <TechStack />
+      <Projects />
+      <Certifications />
+      <Contact />
 
-      <themeContext.Provider value={ dark }>
-
-        <div className="app-ombre" >
-          <div className="App" style={ dark ? { background: 'var(--fBlack)', color: "#fff" } : { background: 'var(--fWhite)', color: "#090909" } } >
-            <Navbar setDark={ () => dark ? setTheme(false) : setTheme(true) } ></Navbar>
-            <Intro></Intro>
-            <Services></Services>
-            <Portfolio></Portfolio>
-            <Skills></Skills>
-            <Contact></Contact>
-          </div>
-          <Footer></Footer>
-
-        </div>
-      </themeContext.Provider>
-    </React.StrictMode>
+      {/* Copyright/Footer */}
+      <footer style={{ textAlign: 'center', padding: '2rem', borderTop: '1px solid var(--glass-border)', color: '#666' }}>
+        © {new Date().getFullYear()} Lontsi Hermann. All rights reserved.
+      </footer>
+    </div>
   );
 }
-
