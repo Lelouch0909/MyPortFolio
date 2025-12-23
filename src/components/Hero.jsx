@@ -88,7 +88,7 @@ const Hero = () => {
 
             {/* Logo */}
             <div style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 10 }}>
-                <img src="/image.png" alt="Logo" style={{ width: '60px', height: 'auto', filter: 'drop-shadow(0 0 10px rgba(0,255,136,0.3))' }} />
+                <img src="/image-big.png" alt="Logo" style={{ width: '60px', height: 'auto', filter: 'drop-shadow(0 0 10px rgba(0,255,136,0.3))' }} />
             </div>
 
             {/* Overlay Content */}
