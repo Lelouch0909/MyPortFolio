@@ -6,18 +6,18 @@ const projects = [
         title: "AWDPay API",
         category: "Fintech Core",
         description: "Architected and developed a secure payment aggregator API facilitating transactions across Africa (Mobile Money, Cards). Implemented PCI-DSS compliant security standards, HMAC signature verification, and automated reconciliation systems.",
-        stack: ["Java Spring Boot", "PostgreSQL", "Redis", "Docker", "Vault"],
+        stack: ["Spring Boot", "PostgreSQL", "Redis", "Docker", "Vault", "Prometheus", "Zipkin" ,"Pulsar","Microservices"],
         link: "https://documentation-7e8c19.gitlab.io/",
         featured: true
     },
-    {
-        title: "KubeScale Orchestrator",
-        category: "Cloud Infrastructure",
-        description: "(Fictional) A custom Kubernetes operator built in Go to automatically scale stateless microservices based on custom Prometheus metrics (request latency & queue depth) rather than just CPU/RAM.",
-        stack: ["Go", "Kubernetes", "Prometheus", "Helm", "gRPC"],
-        link: "#",
-        featured: true
-    },
+{
+    "title": "Starbucks Kubernetes",
+    "category": "Cloud Native / DevOps",
+    "description": "Demo project for deploying a Starbucks-inspired application on a Kubernetes cluster. Provides a practical example of orchestrating, scaling, and managing Node.js applications in a cloud-native environment.",
+    "stack": ["Kubernetes", "Docker", "Node.js","PM2 ", "Shell script", "Jenkins","SonarQube"],
+    "link": "https://github.com/Lelouch0909/starbucks-kubernetes",
+    "featured": false
+},
     {
         title: "AlgoTrade Engine",
         category: "High-Performance Computing",
@@ -26,20 +26,13 @@ const projects = [
         link: "#",
         featured: false
     },
-    {
-        title: "Lambda-UI",
-        category: "Open Source",
-        description: "Created and maintained a comprehensive React Native component library used by 1000+ developers. Focus on performance, accessibility (a11y), and native feel across iOS and Android.",
-        stack: ["React Native", "TypeScript", "NPM", "CI/CD"],
-        link: "https://lambda-ui.dev/",
-        featured: false
-    },
+
     {
         title: "Project LINA",
         category: "Social Impact AI",
         description: "Award-winning smart glasses for the visually impaired. Uses geometric deep learning to analyze terrain and obstacle depth in real-time, providing haptic feedback to the user.",
-        stack: ["Python", "TensorFlow Lite", "Raspberry Pi", "OpenCV"],
-        link: "#",
+        stack: ["Python", "LangChain","Keras", "Raspberry Pi", "OpenCV"],
+        link: "https://github.com/Lelouch0909/LINA",
         featured: false
     }
 ];

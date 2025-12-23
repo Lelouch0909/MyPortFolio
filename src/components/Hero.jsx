@@ -161,7 +161,7 @@ const Hero = () => {
                         </button>
 
                         <a
-                            href="https://twitter.com"
+                            href="https://x.com/DevLelouch"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hero-btn"
@@ -207,7 +207,8 @@ const Hero = () => {
                             letterSpacing: '3px',
                             textTransform: 'uppercase',
                             marginTop: '1rem',
-                            cursor: 'default'
+                            cursor: 'default',
+                            textAlign: 'center'
                         }}
                     >
                         Explore My World

@@ -1,14 +1,34 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const form = useRef();
     const [done, setDone] = useState(false);
+    const [error, setError] = useState(false);
 
     const sendEmail = (e) => {
         e.preventDefault();
-        setDone(true);
-        setTimeout(() => setDone(false), 3000);
+        setError(false); // Reset error state on new submission
+
+        emailjs
+            .sendForm('service_pb3dnem', 'template_9q4z852', form.current, {
+                publicKey: 'D82krejlgjXQT9O7Q',
+            })
+            .then(
+                () => {
+                    console.log('SUCCESS!');
+                    setDone(true);
+                    setError(false);
+                    form.current.reset();
+                    setTimeout(() => setDone(false), 3000);
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                    setError(true);
+                    setTimeout(() => setError(false), 3000);
+                },
+            );
     };
 
     return (
@@ -30,12 +50,13 @@ const Contact = () => {
                 <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Get in <span style={{ color: 'var(--accent)' }}>Touch</span></h2>
 
                 <form ref={form} onSubmit={sendEmail} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <input type="text" name="user_name" placeholder="Name" style={inputStyle} required />
-                    <input type="email" name="user_email" placeholder="Email" style={inputStyle} required />
+                    <input type="text" name="to_name" placeholder="Name" style={inputStyle} required />
+                    <input type="email" name="user_mail" placeholder="Email" style={inputStyle} required />
                     <textarea name="message" placeholder="Message" style={{ ...inputStyle, minHeight: '150px' }} required />
                     <button type="submit" style={buttonStyle}>Send Message</button>
 
-                    {done && <span style={{ color: 'var(--primary)', marginTop: '1rem' }}>Thanks for contacting me!</span>}
+                    {done && <span style={{ color: 'var(--primary)', marginTop: '1rem', fontWeight: 'bold' }}>Thanks for contacting me!</span>}
+                    {error && <span style={{ color: 'red', marginTop: '1rem', fontWeight: 'bold' }}>Something went wrong. Please try again.</span>}
                 </form>
 
                 <div style={{ marginTop: '3rem', display: 'flex', justifyContent: 'center', gap: '2rem' }}>

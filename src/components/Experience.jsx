@@ -6,16 +6,54 @@ const experiences = [
         title: "Lead Developer",
         company: "AWDPay",
         date: "Mai 2024 – Present",
-        description: "Development of Payment API consumed by multiple enterprises (incl. BETWINNER). Mobile payment app development. Innovation cell leadership.",
-        stack: ["NextJs", "ExpressJs", "GitLab CI", "PostgreSQL", "Docker", "NGINX", "Spring Boot"]
+ description: `Leading the design, architecture, and development of robust payment APIs, used by major enterprises (including BETWINNER).
+Oversaw the end-to-end development and deployment of a high-performance mobile payment application.
+Managed cloud infrastructure on AWS, automated environments using Docker and NGINX, and handled large-scale PostgreSQL databases.
+Established advanced observability solutions (monitoring, alerting, logging) to ensure system reliability, health, and quick incident response.
+Led the innovation cell: technology watch, proof of concepts, and mentoring of the development team.`,
+    stack: ["Next.js", "Spring Boot", "GitLab CI", "PostgreSQL", "Docker", "NGINX", "AWS", "Monitoring", "Alerting", "Cloudwatch", "Prometheus", "Grafana"]
     },
     {
-        title: "Freelance Fullstack",
-        company: "Tann Mann Foundation",
-        date: "Nov 2023 – Mar 2024",
-        description: "Designed and developed a web & mobile platform for emergency first aid ordering with realtime geolocation.",
-        stack: ["React", "Google Maps API", "Docker", "Firebase", "React Native"]
-    }
+    title: "Freelance Backend Developer",
+    company: "GreenFlow Solutions",
+    date: "Jul 2024 – Feb 2025",
+    description: `Designed and implemented robust backend services for a SaaS platform dedicated to real-time environmental data aggregation and analytics.
+Developed RESTful APIs using Node.js and Express, optimized for high-throughput sensor data ingestion and secure data processing.
+Architected scalable data models and optimized PostgreSQL queries for efficient storage and fast retrieval of millions of records.
+Set up CI/CD pipelines with GitHub Actions and Docker, automating testing, security checks, and deployments to AWS cloud infrastructure.
+Established comprehensive observability with Prometheus and Grafana (metrics and alerting), along with Sentry for error monitoring.
+Handled ongoing maintenance, troubleshooting, and regular system updates to ensure 24/7 reliability and compliance with best security practices.`,
+    stack: [
+      "Spring Boot",
+      "PostgreSQL",
+      "Docker",
+      "GitLab CI",
+      "AWS",
+      "Prometheus",
+      "Grafana",
+      "Sentry",
+      "REST API"
+    ]
+} ,
+
+    {
+    title: "Freelance Fullstack Developer",
+    company: "Tann Mann Foundation",
+    date: "Nov 2023 – Mar 2024",
+    description: `Designed and developed a web and mobile platform for emergency first aid ordering, featuring real-time geolocation and responsive interfaces.
+Set up automated build and deployment pipelines using Docker containers for both frontend and backend services.
+Integrated Firebase for authentication, cloud functions, and serverless backend operations, ensuring scalability and reliability.`,
+    stack: [
+      "React",
+      "React Native",
+      "Google Maps API",
+      "Docker",
+      "Firebase",
+      "CI/CD",
+      "Monitoring",
+      "Logging"
+    ]
+}
 ];
 
 const Experience = () => {

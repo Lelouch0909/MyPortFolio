@@ -1,25 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
 const skills = {
-    "Cloud Infrastructure": [
-        { name: "AWS", level: 90 },
-        { name: "Google Cloud", level: 85 },
-        { name: "Huawei Cloud", level: 80 },
-        { name: "Terraform", level: 75 }
-    ],
-    "DevOps & CI/CD": [
-        { name: "Docker & K8s", level: 95 },
-        { name: "GitLab CI", level: 90 },
-        { name: "Jenkins", level: 85 },
-        { name: "ArgoCD", level: 80 }
-    ],
-    "Backend Engineering": [
-        { name: "Java (Spring Boot)", level: 90 },
-        { name: "Node.js", level: 85 },
-        { name: "Python", level: 80 },
-        { name: "PostgreSQL", level: 85 }
-    ]
+  "Cloud, DevOps & Observability": [
+    { name: "AWS", level: 80 },
+    { name: "VPS", level: 90 },
+    { name: "Huawei Cloud", level: 80 },
+    { name: "Docker", level: 95 },
+    { name: "Kubernetes", level: 90 },
+    { name: "GitLab CI", level: 90 },
+    { name: "Prometheus", level: 80 },
+    { name: "Grafana", level: 80 }
+  ],
+  "Backend Engineering": [
+    { name: "Java (Spring Boot)", level: 90 },
+    { name: "Spring Cloud", level: 85 },
+    { name: "Resilience4j", level: 85 },
+    { name: "Spring Security (OAuth2, JWT)", level: 80 },
+    { name: "JPA / Hibernate", level: 85 },
+    { name: "PostgreSQL", level: 85 },
+    { name: "Spring Cloud Config", level: 80 },
+    { name: "Apache Kafka", level: 75 }
+  ],
+  "Architecture & Concepts": [
+    { name: "Microservices", level: 90 },
+    { name: "RESTful Web Services", level: 90 },
+    { name: "Domain Driven Design (DDD)", level: 85 },
+    { name: "Hexagonal Architecture", level: 80 },
+    { name: "Event Driven Architecture", level: 80 },
+    { name: "CQRS / Event Sourcing", level: 75 },
+    { name: "API Design (Contract First)", level: 80 },
+    { name: "Continuous Delivery & Deployment", level: 85 }
+  ]
 };
 
 const TechStack = () => {
