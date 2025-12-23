@@ -6,32 +6,36 @@ const projects = [
         title: "AWDPay API",
         category: "Fintech Core",
         description: "Architected and developed a secure payment aggregator API facilitating transactions across Africa (Mobile Money, Cards). Implemented PCI-DSS compliant security standards, HMAC signature verification, and automated reconciliation systems.",
-        stack: ["Spring Boot", "PostgreSQL", "Redis", "Docker", "Vault", "Prometheus", "Zipkin" ,"Pulsar","Microservices"],
+        stack: ["Spring Boot", "PostgreSQL", "Redis", "Docker", "Vault", "Prometheus", "Zipkin", "Pulsar", "Microservices"],
         link: "https://documentation-7e8c19.gitlab.io/",
         featured: true
     },
-{
-    "title": "Starbucks Kubernetes",
-    "category": "Cloud Native / DevOps",
-    "description": "Demo project for deploying a Starbucks-inspired application on a Kubernetes cluster. Provides a practical example of orchestrating, scaling, and managing Node.js applications in a cloud-native environment.",
-    "stack": ["Kubernetes", "Docker", "Node.js","PM2 ", "Shell script", "Jenkins","SonarQube"],
-    "link": "https://github.com/Lelouch0909/starbucks-kubernetes",
-    "featured": false
-},
     {
-        title: "AlgoTrade Engine",
-        category: "High-Performance Computing",
-        description: "(Fictional) Low-latency trading engine capable of processing 50k orders/second. Built with Rust for memory safety and zero-cost abstractions, utilizing ring buffers and lock-free data structures.",
-        stack: ["Rust", "C++", "ZeroMQ", "Linux Kernel Tuning"],
-        link: "#",
-        featured: false
+        "title": "Starbucks Kubernetes",
+        "category": "Cloud Native / DevOps",
+        "description": "Demo project for deploying a Starbucks-inspired application on a Kubernetes cluster. Provides a practical example of orchestrating, scaling, and managing Node.js applications in a cloud-native environment.",
+        "stack": ["Kubernetes", "Docker", "Node.js", "PM2 ", "Shell script", "Jenkins", "SonarQube"],
+        "link": "https://github.com/Lelouch0909/starbucks-kubernetes",
+        "featured": false
+    },
+    {
+        "title": "Rubberduck AI Agent",
+        "category": "AI for Developer Education",
+        "description": "An intelligent agent—similar to ChatGPT—designed to help users learn microservices development. Built in Spring and leveraging a cloud-native stack, it integrates Zipkin for tracing, Prometheus for monitoring, Apache Pulsar for messaging, and uses Langchain4j and Spring AI for conversational capabilities.",
+        "stack": ["Spring Boot", "Microservices", "Zipkin", "Prometheus", "Apache Pulsar", "Langchain4j", "Spring AI"],
+        "links": [
+            { "label": "📂 Service Registry", "url": "https://github.com/Lelouch0909/rubberduck-service-register" },
+            { "label": "🧠 Agent Rag Logic", "url": "https://github.com/Lelouch0909/rubberduck-metier-service-discussion" },
+            { "label": "🧠 Chat Rag Agent", "url": "https://github.com/Lelouch0909/rubberduck-metier-service-connector" }
+        ],
+        "featured": true
     },
 
     {
         title: "Project LINA",
         category: "Social Impact AI",
         description: "Award-winning smart glasses for the visually impaired. Uses geometric deep learning to analyze terrain and obstacle depth in real-time, providing haptic feedback to the user.",
-        stack: ["Python", "LangChain","Keras", "Raspberry Pi", "OpenCV"],
+        stack: ["Python", "LangChain", "Keras", "Raspberry Pi", "OpenCV"],
         link: "https://github.com/Lelouch0909/LINA",
         featured: false
     }
@@ -107,17 +111,36 @@ const Projects = () => {
                             ))}
                         </div>
 
-                        {project.link !== '#' && (
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" style={{
-                                alignSelf: 'flex-start',
-                                color: 'var(--text-color)',
-                                borderBottom: '1px solid var(--primary)',
-                                paddingBottom: '2px',
-                                fontSize: '0.9rem'
-                            }}>
-                                View Project {'->'}
-                            </a>
-                        )}
+                        {/* Links Section: Supports single 'link' or multiple 'links' */}
+                        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignSelf: 'flex-start' }}>
+                            {project.links ? (
+                                project.links.map((linkItem, idx) => (
+                                    <a key={idx} href={linkItem.url} target="_blank" rel="noopener noreferrer" style={{
+                                        color: 'var(--text-color)',
+                                        borderBottom: '1px solid var(--primary)',
+                                        paddingBottom: '2px',
+                                        fontSize: '0.9rem',
+                                        textDecoration: 'none',
+                                        maxWidth: 'max-content'
+                                    }}>
+                                        {linkItem.label} {'->'}
+                                    </a>
+                                ))
+                            ) : (
+                                project.link && project.link !== '#' && (
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" style={{
+                                        color: 'var(--text-color)',
+                                        borderBottom: '1px solid var(--primary)',
+                                        paddingBottom: '2px',
+                                        fontSize: '0.9rem',
+                                        textDecoration: 'none',
+                                        maxWidth: 'max-content'
+                                    }}>
+                                        View Project {'->'}
+                                    </a>
+                                )
+                            )}
+                        </div>
                     </motion.div>
                 ))}
             </div>

@@ -86,6 +86,11 @@ const Hero = () => {
                 </Canvas>
             </div>
 
+            {/* Logo */}
+            <div style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 10 }}>
+                <img src="/image.png" alt="Logo" style={{ width: '60px', height: 'auto', filter: 'drop-shadow(0 0 10px rgba(0,255,136,0.3))' }} />
+            </div>
+
             {/* Overlay Content */}
             <div style={{
                 position: 'absolute',
@@ -159,6 +164,44 @@ const Hero = () => {
                         >
                             GET IN TOUCH
                         </button>
+
+                        <a
+                            href="/cv-dev.pdf" // Points to public/cv-dev.pdf
+                            download="Lontsi_Hermann_CV.pdf"
+                            className="hero-btn"
+                            style={{
+                                padding: '1rem 2rem',
+                                fontSize: '1.1rem',
+                                fontWeight: 'bold',
+                                borderRadius: '50px',
+                                border: '1px solid #00ccff', // Blue accent for CV
+                                background: 'rgba(0, 204, 255, 0.05)',
+                                backdropFilter: 'blur(5px)',
+                                color: '#00ccff',
+                                cursor: 'pointer',
+                                textDecoration: 'none',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '10px',
+                                transition: 'all 0.2s ease',
+                                whiteSpace: 'nowrap',
+                                boxShadow: '0 0 20px rgba(0, 204, 255, 0.1)'
+                            }}
+                            onMouseOver={(e) => {
+                                e.currentTarget.style.background = 'rgba(0, 204, 255, 0.15)';
+                                e.currentTarget.style.transform = 'scale(1.05)';
+                                e.currentTarget.style.boxShadow = '0 0 35px rgba(0, 204, 255, 0.3)';
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.background = 'rgba(0, 204, 255, 0.05)';
+                                e.currentTarget.style.transform = 'scale(1)';
+                                e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 204, 255, 0.1)';
+                            }}
+                        >
+                            <span>Download CV</span>
+                            <i className="fa-solid fa-download" style={{ fontSize: '1.2rem' }}></i>
+                        </a>
 
                         <a
                             href="https://x.com/DevLelouch"
